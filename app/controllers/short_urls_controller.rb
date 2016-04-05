@@ -14,7 +14,7 @@ class ShortUrlsController < ApplicationController
   end
 
   def index
-    @short_urls=ShortUrl.all
+    @short_urls=current_user.short_urls.paginate(:page => params[:page], :per_page => 10)
   end
 
   def original_url
@@ -24,6 +24,11 @@ class ShortUrlsController < ApplicationController
       url.save
       redirect_to url.original_url
     end
+  end
+
+  def destroy
+    ShortUrl.find_by_id(params[:short_url_id]).destroy
+    redirect_to short_urls_path
   end
 
   private

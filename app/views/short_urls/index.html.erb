@@ -6,6 +6,7 @@
       <th>Original Url</th>
       <th>Shorty Url</th>
       <th>Visits Count</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -14,9 +15,11 @@
           <th><%=short_url.original_url%></th>
           <td><%=link_to "http://localhost:3000/"+short_url.shorty,"/#{short_url.shorty}"%></td>
           <td><%=short_url.visits_count%></td>
+          <td><%= link_to "Delete",short_urls_path(short_url_id: short_url), :method => :delete %></td>
         </tr>
     <%end%>
     </tbody>
   </table>
+  <%= will_paginate @short_urls %>
   <%= button_to "Generate Short Url", short_urls_new_path, method: :get, class: "btn btn-primary" %>
 </div>

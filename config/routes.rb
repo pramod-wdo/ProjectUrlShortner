@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   get '/:id' => 'short_urls#original_url'
 
+  delete 'short_urls' => 'short_urls#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

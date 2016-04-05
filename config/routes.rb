@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   resources :users
+
+  get '/short_urls/new'
+  post '/short_urls/create'
+
+  get '/short_urls' => 'short_urls#index'
+
+  get '/:id' => 'short_urls#original_url'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -22,19 +22,4 @@ describe ShortVisitsController do
     expect login_path
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new short visit" do
-        expect {
-          xhr :post, :create, short_user: valid_attributes
-        }.to change(ShortVisit, :count).by(1)
-      end
-
-      it "assigns a newly created user as @user" do
-        xhr :post, :create, short_visit: valid_attributes
-        expect(assigns(:short_visit)).to be_a(ShortVisit)
-        expect(assigns(:short_visit)).to be_persisted
-      end
-    end
-  end
 end

@@ -1,6 +1,7 @@
 class ShortUrlsController < ApplicationController
 
   before_filter :authorize
+  require 'open-uri'
 
 
   def new
@@ -24,7 +25,7 @@ class ShortUrlsController < ApplicationController
     url = ShortUrl.find_by_shorty(shorty_params[:id])
     location=find_location
     if url.present?
-      url.short_visits.create(visitor_ip:location["ip"],visitor_city:location["country_name"],visitor_country_iso2:location["country_code"])
+      url.short_visits.create(visitor_ip:location["ip"],visitor_city:location["country"],visitor_country_iso2:location["loc"])
       url.visits_count+=1
       url.save
       redirect_to url.original_url
@@ -37,7 +38,7 @@ class ShortUrlsController < ApplicationController
   end
 
   def find_location
-    response = open("http://freegeoip.net/json/#{remote_ip}").read
+    response = open("http://ipinfo.io/#{remote_ip}").read
     JSON.parse(response)
   end
 

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Last Five Short Visits</h1>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Visitor IP</th>
+      <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%@short_visit.each do |short_vist|%>
+        <tr>
+          <td><%=short_vist.visitor_ip%></td>
+          <td><%=short_vist.visitor_country_iso2%></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+</div>

@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   delete 'short_urls' => 'short_urls#destroy'
 
+  post '/short_visits/create'
+
+  get 'short_visits/show' => 'short_visits#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
